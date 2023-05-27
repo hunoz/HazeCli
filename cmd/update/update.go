@@ -13,7 +13,7 @@ import (
 	"github.com/fatih/color"
 )
 
-var CmdVersion = "1.0.0"
+var CmdVersion = "1.0.1"
 
 type Release struct {
 	Url       string `json:"url,omitempty"`
@@ -83,8 +83,8 @@ var UpdateCmd = &cobra.Command{
 		}
 
 		// Here we need to get the asset for the current architecture
-		assetFilename := fmt.Sprintf("spark-%v-%v", runtime.GOOS, runtime.GOARCH)
-		downloadUrl := fmt.Sprintf("https://github.com/hunoz/HazeCli/releases/download/%v/%v", latestVersion, assetFilename)
+		assetFilename := fmt.Sprintf("haze-%v-%v", runtime.GOOS, runtime.GOARCH)
+		downloadUrl := fmt.Sprintf("https://github.com/hunoz/haze/releases/download/%v/%v", latestVersion, assetFilename)
 
 		response, err := http.Get(downloadUrl)
 		if err != nil {

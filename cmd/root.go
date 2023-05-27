@@ -33,6 +33,15 @@ var RootCmd = &cobra.Command{
 	Use:   "haze <url>",
 	Short: "Haze can call Cognito-backed endpoints using JWT",
 	Args: func(cmd *cobra.Command, args []string) error {
+		version, err := cmd.Flags().GetBool("version")
+		if err != nil {
+			return errors.Wrap(err, "Error getting version")
+		}
+
+		if version {
+			return nil
+		}
+
 		if err := cobra.ExactArgs(1)(cmd, args); err != nil {
 			return errors.New("No URL specified")
 		}
